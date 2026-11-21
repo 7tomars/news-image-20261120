@@ -290,14 +290,17 @@ STORIES = [
 def draw_icon(cv, kind, x, y):
     cx, cy = x + 28, y + 28
     if kind == "missile":
-        # rocket body + burst
-        cv.line(cx - 6, cy + 16, cx + 6, cy - 14, NAVY, 4)
-        cv.line(cx + 6, cy - 14, cx + 12, cy - 4, NAVY, 3)
-        cv.line(cx + 6, cy - 14, cx + 0, cy - 4, NAVY, 3)
-        cv.circle(cx + 8, cy - 18, 4, RED, filled=True)
-        cv.line(cx - 14, cy + 20, cx - 20, cy + 26, GOLD, 3)
-        cv.line(cx - 6, cy + 22, cx - 8, cy + 28, GOLD, 3)
-        cv.line(cx + 2, cy + 20, cx + 6, cy + 27, GOLD, 3)
+        # Upright rocket: pointed nose cone, solid body, round window,
+        # swept fins and a three-tongue exhaust flame below.
+        cv.line(cx, cy - 22, cx - 7, cy - 8, NAVY, 3)
+        cv.line(cx, cy - 22, cx + 7, cy - 8, NAVY, 3)
+        cv.fill_rect(cx - 7, cy - 8, 14, 22, NAVY)
+        cv.circle(cx, cy + 1, 3, PAPER, filled=True)
+        cv.line(cx - 7, cy + 10, cx - 15, cy + 19, RED, 3)
+        cv.line(cx + 7, cy + 10, cx + 15, cy + 19, RED, 3)
+        cv.line(cx - 4, cy + 15, cx, cy + 25, GOLD, 3)
+        cv.line(cx + 4, cy + 15, cx, cy + 25, GOLD, 3)
+        cv.line(cx, cy + 15, cx, cy + 23, RED, 3)
     elif kind == "cyclone":
         # spiral: three offset arcs
         cv.circle(cx, cy, 20, NAVY)
